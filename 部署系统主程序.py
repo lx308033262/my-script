@@ -1035,12 +1035,12 @@ for host in host_list:
 
 def clean_cdn_cache(mod_name):
     import subprocess
-    if mod_name == 'cms-web':
-        itemid="123"
-        cmd='''curl -s -H "Content-Type: application/json" -X POST --data '{ "userid": "gaoxiaobang","digest": "995571ecccccae72599a4f9f5716ea97","urls": [ { "url": "http://static-gs.gaoxiaobang.com/", "itemid": %s,  "action": "path_refresh", "source": "http://hku.gaoxiaobang.com/",  "priority": "1"}]}' http://gsvc.v.c4hcdn.com:8080/portal/mds/deliver_v2.jsp''' % itemid
-    if mod_name == 'gxb-web':
-        itemid="456"
-        cmd='''curl -s -H "Content-Type: application/json" -X POST --data '{ "userid": "gaoxiaobang","digest": "9153c168eb4090fd6a9cbb090b9c7e0b","urls": [ { "url": "http://static-gs.class.gaoxiaobang.com/",   "itemid": %s,   "action": "path_refresh", "source": "http://hku.class.gaoxiaobang.com/", "priority": "2"}]}' http://gsvc.v.c4hcdn.com:8080/portal/mds/deliver_v2.jsp''' % itemid
+        if mod_name == 'cms-web':
+            itemid="123"
+            #clean_cmd
+        if mod_name == 'gxb-web':
+            itemid="456"
+            #clean_cmd
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     out = p.stdout.read()
     if eval(out)["msg"] == "success":
